@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  “我也只是试试这个怎么用”
-date:   2016-01-15 13:51:42
+title:  “努力尝试新的事物”
+date:   2016-03-16 10:55:48
 categories: jekyll update
 ---
 mark down的语法还有很多不会,但是也得开始做.
