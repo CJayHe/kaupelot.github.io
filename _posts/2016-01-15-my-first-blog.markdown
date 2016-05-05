@@ -22,7 +22,7 @@ RSA host key for 192.168.2.2 has changed and you have requested strict checking.
 Host key verification failed.
 这是openssh-server重装引起的，执行以下命令即可解决
 
-ssh-keygen -R 192.168.2.2 (192.168.2.2换成你要连的手机网络IP)
+\ ssh-keygen -R 192.168.2.2 (192.168.2.2换成你要连的手机网络IP)
 安装MobileSubstrate（Cydia源里安装）
 ...
 
@@ -31,12 +31,12 @@ ssh-keygen -R 192.168.2.2 (192.168.2.2换成你要连的手机网络IP)
 2.可下载试用版：download a trial (当然你也可以买滴~~)
 3.如果之前下载过又过期了，可以调整系统时间（调前一两年）
 1.打开Revela，找到libReveal.dylib、Reveal.framework
-
+![pic]: http://upload-images.jianshu.io/upload_images/295346-d5b5d4e236539aec.png
 
 2.拷贝Reveal.framework到越狱机 （注意：重新开个终端，无需连接越狱机）
 
-scp -r /Users/apple/Desktop/Reveal.framework  root@192.168.2.2:/System/Library/Frameworks
-
+\scp -r /Users/apple/Desktop/Reveal.framework  root@192.168.2.2:/System/Library/Frameworks
+<img src="http://upload-images.jianshu.io/upload_images/295346-5c2de59a14c5f8f1.png" alt="替代文本" title="标题文本" width="200" />
 可到越狱机查看注入的文件:
 
 
@@ -69,8 +69,9 @@ App Store
 
 2.查看手机所有app资源文件输入：ls （列出手机上所有app的资源文件，怎么找？）
 
+ps:查看当前打开的app的bundle id的最简单方法是:在iPhone中关闭掉其他的app,然后在终端输入 ps aux 注意查看一般,最长的那个一般就是当前app的路径.
 
-3.打开iTunes->我的应用程序->右键简书app->在Finder中显示->解压ipa->进入解压文件->Payload->右键应用程序->显示包内容->找到可执行文件(黑色)->复制文件名
+3.打开iTunes->我的应用程序->右键简书app->在Finder中显示->解压ipa->进入解压文件->Payload->右键应用程序->显示包内容->找到可执行文件(黑色)->复制文件名 (iOS9之后已经不能通过iTunes查看到安装的app了,除非是在iTunes上面安装的store app,所以此方法已经不是那么有效,不过对于越狱后hook store app 给未越狱设备安装还是可以考虑从iTunes安装app.建议在MacBook上安装iTools或者别的iDevice工具,方便管理越狱设备.比如此步骤就可以直接在iTools的程序选项中将app导出ipa文件到本地解压操作.显示包内容之后就可以看到plist文件了,直接用文本工具或者Xcode打开会更加直接)
 
 可执行文件：
 
@@ -85,6 +86,11 @@ App Store
 
 下图红框里的comjianshu.Hugo即为简书的Bundle identifier
 
+
+5.打开Xcode
+如果您是使用的非app store的方式安装的app,比如cydia,25pp助手.你可以直接在Xcode -> Window -> Devices -> 您的设备查看所有安装的app的Bundle identifier.
+
+6.
 
 重启手机后白苹果，无法进入界面
 预估原因：libReveal.plist文件格式错误导致
@@ -101,7 +107,7 @@ App Store
 1.找到8.4的固件(下载地址: http://jailbreak.25pp.com/gujian/ 固件区分: http://bbs.25pp.com/thread-108715-1-1.html)
 2.手机连接mac->打开iTunes->选择设备->摘要->option + 点击更新/恢复iPhone)->选择下载的固件 -> 自动安装直到成功
 第三步：越狱
-1.用太极软件越狱 (下载地址：http://www.pangu.io) （ps：pp助手，8.4越狱失败）
+1.用太极软件越狱 (下载地址：http://www.pangu.io)
 
 
 原文链接：http://www.jianshu.com/p/d172826fe578
