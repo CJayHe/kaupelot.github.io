@@ -31,11 +31,15 @@ Host key verification failed.
 2.可下载试用版：download a trial (当然你也可以买滴~~)
 3.如果之前下载过又过期了，可以调整系统时间（调前一两年）
 1.打开Revela，找到libReveal.dylib、Reveal.framework
-<img src="http://upload-images.jianshu.io/upload_images/295346-d5b5d4e236539aec.png" alt="替代文本" title="标题文本" width="400" />
+
+<img src="http://upload-images.jianshu.io/upload_images/295346-d5b5d4e236539aec.png" />
+
 2.拷贝Reveal.framework到越狱机 （注意：重新开个终端，无需连接越狱机）
 
     scp -r /Users/apple/Desktop/Reveal.framework  root@192.168.2.2:/System/Library/Frameworks
-<img src="http://upload-images.jianshu.io/upload_images/295346-5c2de59a14c5f8f1.png" alt="替代文本" title="标题文本" width="400" />
+
+<img src="http://upload-images.jianshu.io/upload_images/295346-5c2de59a14c5f8f1.png" />
+
 可到越狱机查看注入的文件:
 
 
