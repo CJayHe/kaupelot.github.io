@@ -22,7 +22,7 @@ RSA host key for 192.168.2.2 has changed and you have requested strict checking.
 Host key verification failed.
 这是openssh-server重装引起的，执行以下命令即可解决
 
-\ ssh-keygen -R 192.168.2.2 (192.168.2.2换成你要连的手机网络IP)
+    ssh-keygen -R 192.168.2.2 (192.168.2.2换成你要连的手机网络IP)
 安装MobileSubstrate（Cydia源里安装）
 ...
 
@@ -31,18 +31,17 @@ Host key verification failed.
 2.可下载试用版：download a trial (当然你也可以买滴~~)
 3.如果之前下载过又过期了，可以调整系统时间（调前一两年）
 1.打开Revela，找到libReveal.dylib、Reveal.framework
-![pic]: http://upload-images.jianshu.io/upload_images/295346-d5b5d4e236539aec.png
-
+<img src="http://upload-images.jianshu.io/upload_images/295346-d5b5d4e236539aec.png" alt="替代文本" title="标题文本" width="400" />
 2.拷贝Reveal.framework到越狱机 （注意：重新开个终端，无需连接越狱机）
 
-\scp -r /Users/apple/Desktop/Reveal.framework  root@192.168.2.2:/System/Library/Frameworks
-<img src="http://upload-images.jianshu.io/upload_images/295346-5c2de59a14c5f8f1.png" alt="替代文本" title="标题文本" width="200" />
+    scp -r /Users/apple/Desktop/Reveal.framework  root@192.168.2.2:/System/Library/Frameworks
+<img src="http://upload-images.jianshu.io/upload_images/295346-5c2de59a14c5f8f1.png" alt="替代文本" title="标题文本" width="400" />
 可到越狱机查看注入的文件:
 
 
 3.拷贝libReveal.dylib到越狱机
 
-scp -r /Users/apple/Desktop/libReveal.plist root@192.168.2.2:/Library/MobileSubstrate/DynamicLibraries/
+    scp -r /Users/apple/Desktop/libReveal.plist root@192.168.2.2:/Library/MobileSubstrate/DynamicLibraries/
 
 4.在本地创建libReveal.plist，编辑libReveal.plist，指定app的Bundle identifier（可以指定多个Bundle identifier），下面添加App Store与简书的Bundle identifier
 （注意：如何找app对应的Bundle identifier请看后面）
@@ -50,12 +49,12 @@ scp -r /Users/apple/Desktop/libReveal.plist root@192.168.2.2:/Library/MobileSubs
 
 拷贝libReveal.plist到越狱机
 
-scp -r /Users/apple/Desktop/libReveal.plist root@192.168.2.2:/Library/MobileSubstrate/DynamicLibraries/
+    scp -r /Users/apple/Desktop/libReveal.plist root@192.168.2.2:/Library/MobileSubstrate/DynamicLibraries/
 
 可越狱机查看注入的文件:
 
-# cd /Library/MobileSubstrate/DynamicLibraries/
-# ls
+    # cd /Library/MobileSubstrate/DynamicLibraries/
+    # ls
 
 重启手机（或执行命令killall SpringBoard），打开App Store或简书app，随后在Reveal右上角选择
 （注意：有可能白苹果，解决方案请看后面）
@@ -65,7 +64,7 @@ App Store
 
 简书app
 如何找到app的Bundle identifier？
-1.终端连接越狱机后，输入：cd /private/var/mobile/Containers/Bundle/Application
+1.终端连接越狱机后，输入：    cd /private/var/mobile/Containers/Bundle/Application
 
 2.查看手机所有app资源文件输入：ls （列出手机上所有app的资源文件，怎么找？）
 
