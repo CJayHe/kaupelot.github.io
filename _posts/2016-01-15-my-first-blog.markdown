@@ -70,7 +70,7 @@ categories: jekyll update
 <div class="image-package">
 <img src="http://upload-images.jianshu.io/upload_images/295346-2815acc01ddaac2b.png?imageMogr2/auto-orient/strip%257CimageView2/2/w/1240" data-original-src="http://upload-images.jianshu.io/upload_images/295346-2815acc01ddaac2b.png"><br><div class="image-caption"></div>
 </div>
-<p>3.打开iTunes-&gt;我的应用程序-&gt;右键<code>简书app</code>-&gt;在Finder中显示-&gt;解压ipa-&gt;进入解压文件-&gt;Payload-&gt;右键应用程序-&gt;显示包内容-&gt;找到<code>可执行文件</code>(黑色)-&gt;复制文件名</p>
+<p>3.打开iTunes-&gt;我的应用程序-&gt;右键<code>简书app</code>-&gt;在Finder中显示-&gt;解压ipa-&gt;进入解压文件-&gt;Payload-&gt;右键应用程序-&gt;显示包内容-&gt;找到<code>可执行文件</code>(黑色)-&gt;复制文件名 (iOS9之后已经不能通过iTunes查看到安装的app了,除非是在iTunes上面安装的store app,所以此方法已经不是那么有效,不过对于越狱后hook store app 给未越狱设备安装还是可以考虑从iTunes安装app.建议在MacBook上安装iTools或者别的iDevice工具,方便管理越狱设备.比如此步骤就可以直接在iTools的程序选项中将app导出ipa文件到本地解压操作.显示包内容之后就可以看到plist文件了,直接用文本工具或者Xcode打开会更加直接)</p>
 <p><code>可执行文件</code>：<br></p><div class="image-package">
 <img src="http://upload-images.jianshu.io/upload_images/295346-4ff43aabc45845ca.png?imageMogr2/auto-orient/strip%257CimageView2/2/w/1240" data-original-src="http://upload-images.jianshu.io/upload_images/295346-4ff43aabc45845ca.png"><br><div class="image-caption"></div>
 </div>
@@ -84,6 +84,8 @@ categories: jekyll update
 <div class="image-package">
 <img src="http://upload-images.jianshu.io/upload_images/295346-c935e5d5820d4a98.png?imageMogr2/auto-orient/strip%257CimageView2/2/w/1240" data-original-src="http://upload-images.jianshu.io/upload_images/295346-c935e5d5820d4a98.png"><br><div class="image-caption"></div>
 </div>
+5.打开Xcode
+如果您是使用的非app store的方式安装的app,比如cydia,25pp助手.你可以直接在Xcode -> Window -> Devices -> 您的设备查看所有安装的app的Bundle identifier.
 <h3>重启手机后白苹果，无法进入界面</h3>
 <p>预估原因：libReveal.plist文件格式错误导致</p>
 <p>第一种方法：</p>
