@@ -82,8 +82,8 @@ categories: jekyll update
 <div class="image-package">
 <img src="http://upload-images.jianshu.io/upload_images/295346-c935e5d5820d4a98.png?imageMogr2/auto-orient/strip%257CimageView2/2/w/1240" data-original-src="http://upload-images.jianshu.io/upload_images/295346-c935e5d5820d4a98.png"><br><div class="image-caption"></div>
 </div>
-5.打开Xcode
-如果您是使用的非app store的方式安装的app,比如cydia,25pp助手.你可以直接在Xcode -> Window -> Devices -> 您的设备查看所有安装的app的Bundle identifier.
+<p>5.打开Xcode</p>
+<p>如果您是使用的非app store的方式安装的app,比如cydia,25pp助手.你可以直接在Xcode -> Window -> Devices -> 您的设备查看所有安装的app的Bundle identifier.</p>
 <h3>重启手机后白苹果，无法进入界面</h3>
 <p>预估原因：libReveal.plist文件格式错误导致</p>
 <p>第一种方法：</p>
