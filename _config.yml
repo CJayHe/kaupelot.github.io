@@ -3,7 +3,7 @@ title: 艺成行天涯
 email: kaupelot@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   不断努力,争取更好的结果!
-baseurl: "http://ziroomer.com" # the subpath of your site, e.g. /blog/
+baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://ziroomer.com" # the base hostname & protocol for your site
 twitter_username: kaupelot
 # github_username:  kaupelot
