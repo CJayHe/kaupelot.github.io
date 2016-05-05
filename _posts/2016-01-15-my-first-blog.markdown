@@ -5,94 +5,103 @@ date:   2016-01-15 3:51:42
 categories: jekyll update
 ---
 关于在jekyll怎么写文章,我也不知道的啦!反正先试试.
-<table>
-    <tr>
-        <td>Foo</td>
-    </tr>
-</table>
 
-ImageMagick-exploit-hack.png
-ImageMagick是一款广泛流行的图像处理软件，有无数的网站使用它来进行图像处理，但在本周二，ImageMagick披露出了一个严重的0day漏洞，此漏洞允许攻击者通过上传恶意构造的图像文件，在目标服务器执行任意代码。Slack安全工程师Ryan Hube发现了这一0day漏洞。
+Reveal是一个很强大的UI分析工具，可非常直观地查看app的UI布局，不仅限于自己的app，其他app的UI布局也一览无余。下面就是要干这事...
+必须要一台越狱手机
+越狱教程：http://www.pangu.io
+安装openSSH（Cydia源里安装）
+在mac终端通过openSSH命令连接越狱机
+
+1.越狱机与mac必须连接同一网络
+2.在终端命令中输入ssh root@越狱机网络IP，如：ssh root@192.168.2.2
+3.输入您修改过的Root密码，默认：alpine
+
+注意：连接越狱机时，可能出现下面错误（未出错请忽略这块）
+
+RSA host key for 192.168.2.2 has changed and you have requested strict checking.
+Host key verification failed.
+这是openssh-server重装引起的，执行以下命令即可解决
+
+ssh-keygen -R 192.168.2.2 (192.168.2.2换成你要连的手机网络IP)
+安装MobileSubstrate（Cydia源里安装）
+...
+
+安装Reveal（Mac上）
+1.官网：http://revealapp.com
+2.可下载试用版：download a trial (当然你也可以买滴~~)
+3.如果之前下载过又过期了，可以调整系统时间（调前一两年）
+1.打开Revela，找到libReveal.dylib、Reveal.framework
 
 
-如果你在网站中使用了ImageMagick去识别，裁剪或者调整用户上传的图像，你必须确认已经使用了这些缓解措施，并且调整你的代码只接受有效的图像文件，沙盒ImageMagick也是一个不错的主意。
+2.拷贝Reveal.framework到越狱机 （注意：重新开个终端，无需连接越狱机）
 
-在这个安全漏洞公布之后，这一漏洞的EXP也随即被发布，并被命名为：ImageTragick。漏洞的EXP已经通过邮件和论坛广泛传播，所以如果你使用了ImageMagick去处理用户输入，请立即采取相应的缓解措施。
+scp -r /Users/apple/Desktop/Reveal.framework  root@192.168.2.2:/System/Library/Frameworks
 
-ImageMagick被许多编程语言所支持，包括Perl，C++，PHP，Python和Ruby等，并被部署在数以百万计的网站，博客，社交媒体平台和流行的内容管理系统(CMS)，例如WordPress和Drupal。
+可到越狱机查看注入的文件:
 
-该漏洞的利用十分简单，通过上传一个恶意图像到目标Web服务器上，攻击者就可以执行任意代码，窃取重要信息，用户帐户等。
 
-换句话说，只有采用了ImageMagick，且允许用户上传图像的网站，才会受到影响。
+3.拷贝libReveal.dylib到越狱机
 
-ImageMagick团队已经承认了此漏洞，称：
+scp -r /Users/apple/Desktop/libReveal.plist root@192.168.2.2:/Library/MobileSubstrate/DynamicLibraries/
 
-最近发布的漏洞报告……包含可能存在的远程代码执行。
-虽然该团队还没有公布任何安全补丁，但它建议网站管理者应该在配置文件中添加几行代码去阻止攻击，至少在某些情况下可以防御。
+4.在本地创建libReveal.plist，编辑libReveal.plist，指定app的Bundle identifier（可以指定多个Bundle identifier），下面添加App Store与简书的Bundle identifier
+（注意：如何找app对应的Bundle identifier请看后面）
 
-Web管理员同时被建议在文件发送给ImageMagick处理前，检查文件的magic bytes。Magic bytes是一个文件的前几个字节，被用于识别图像类型，例如GIF，JPEG和PNG等。
 
-为了让你更好地了解你将要面对的漏洞，下面提供一个可以瞒过ImageMagick的示例文件：
+拷贝libReveal.plist到越狱机
 
-push graphic-context
+scp -r /Users/apple/Desktop/libReveal.plist root@192.168.2.2:/Library/MobileSubstrate/DynamicLibraries/
 
-viewbox 0 0 640 480
+可越狱机查看注入的文件:
 
-fill ‘url(https://example.com/image.jpg“|ls “-la)’
+# cd /Library/MobileSubstrate/DynamicLibraries/
+# ls
 
-pop graphic-context
-将其保存为任意的扩展名，例如expoit.jpg，然后通过ImageMagick去运行它
+重启手机（或执行命令killall SpringBoard），打开App Store或简书app，随后在Reveal右上角选择
+（注意：有可能白苹果，解决方案请看后面）
 
-convert exploit.jpg out.png
-是的，ImageMagick将会去执行嵌入的代码：ls -l命令。
 
-将这条命令替换为其它的恶意命令，将会直接威胁到目标机器，不过你可能会触犯一些法律。
+App Store
 
-该漏洞将在ImageMagick 7.0.1-1和6.9.3-10版本中被修补，这些新版本预计将在周末前被公布。
+简书app
+如何找到app的Bundle identifier？
+1.终端连接越狱机后，输入：cd /private/var/mobile/Containers/Bundle/Application
 
-预警：
+2.查看手机所有app资源文件输入：ls （列出手机上所有app的资源文件，怎么找？）
 
-ImageMagick的这个远程代码执行漏洞也将波及Wordpress博客网站以及Discuz论坛！有使用imageMagic模块来处理图片业务的公司&站长请注意：头像上传、证件上传、资质上传等方面的点尤其是使用到图片（批量）裁剪的业务场景！
 
-漏洞描述：
+3.打开iTunes->我的应用程序->右键简书app->在Finder中显示->解压ipa->进入解压文件->Payload->右键应用程序->显示包内容->找到可执行文件(黑色)->复制文件名
 
-据ImageMagick官方，目前程序存在一处远程命令执行漏洞（CVE-2016-3714），当其处理的上传图片带有攻击代码时，可远程实现远程命令执行，进而可能控制服务器，此漏洞被命名为ImageTragick。
+可执行文件：
 
-ImageMagick是一款开源图片处理库，支持PHP、Ruby、NodeJS和Python等多种语言，使用非常广泛。包括PHP imagick、Ruby rmagick和paperclip以及NodeJS imagemagick等多个图片处理插件都依赖它运行。
 
-可能的影响范围包括各类流行的内容管理系统（CMS）。
+查找简书app资源文件路径：find . -name 'Hugo*'
 
-影响影响范围：
 
-1、调用ImageMagick的库实现图片处理和渲染的应用。
+简书app资源文件名：BE1895C3-5CB0-4894-8A9E-FE4EEF4C7989
 
-ImageMagick 为多种语言提供了api。
+4.安装iFile（Cydia源里安装）
+进入iFile打开iTunesMetadata.plist：/private/var/mobile/Containers/Bundle/Application/BE1895C3-5CB0-4894-8A9E-FE4EEF4C7989/iTunesMetadata.plist
 
-2、很多流行的内容管理系统（CMS）使用了ImageMagick ，例如 WordPress 的图片处理插件已被证实存在远程命令执行的漏洞（Author 及以上权限用户执行）。
+下图红框里的comjianshu.Hugo即为简书的Bundle identifier
 
-其他例如MediaWiki、phpBB和vBulletin 使用了ImageMagick 库生成缩略图，还有一些程序如LyX使用ImageMagick转换图片格式。以上应用可能受到此漏洞影响。
 
-3、如果通过shell 中的convert 命令实现一些图片处理功能，也会受到此漏洞影响。
+重启手机后白苹果，无法进入界面
+预估原因：libReveal.plist文件格式错误导致
 
-漏洞等级：
+第一种方法：
 
-高危
+长按【home键】+【电源键】->在白苹果刚刚出现的时候->按住iPhone的音量增加键->iPhone进入Safe Mode->正常重启->将libReveal.plist文件删掉
+第二种方法：
 
-解决方案：官方方案
+第一步：重新恢复系统
+1.打开iTunes，越狱机与电脑连接 -> 长按【home键】+【电源键】6秒强制关机 -> 随后长按【home】键6秒，直到在电脑上看到识别到DFU状态下的USB设备时就进入到DFU模式
+2.随后你有两个选择，升级更高系统或恢复出厂状态。(系统都会自动会升级到最高版本9.3.1)
+第二步：降低系统，目前越狱只支持9.1以下
+1.找到8.4的固件(下载地址: http://jailbreak.25pp.com/gujian/ 固件区分: http://bbs.25pp.com/thread-108715-1-1.html)
+2.手机连接mac->打开iTunes->选择设备->摘要->option + 点击更新/恢复iPhone)->选择下载的固件 -> 自动安装直到成功
+第三步：越狱
+1.用太极软件越狱 (下载地址：http://www.pangu.io) （ps：pp助手，8.4越狱失败）
 
-通过配置策略文件暂时禁用ImageMagick，可在 “/etc/ImageMagick/policy.xml” 文件中添加如下代码：
 
-<policymap>
-  <policy domain="coder" rights="none" pattern="EPHEMERAL" />
-  <policy domain="coder" rights="none" pattern="URL" />
-  <policy domain="coder" rights="none" pattern="HTTPS" />
-  <policy domain="coder" rights="none" pattern="MVG" />
-  <policy domain="coder" rights="none" pattern="MSL" />
-</policymap>
-更多信息：
-
-imagetragick.com ： ImageMagick Is On Fire — CVE-2016–3714 TL;DR
-
-漏洞本地检测POC ：GitHub
-
- * 原文链接：thehackernews，theregister，watcher编译，转载请注明来自FreeBuf黑客与极客（FreeBuf.COM）
+原文链接：http://www.jianshu.com/p/d172826fe578
