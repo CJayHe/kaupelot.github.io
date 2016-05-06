@@ -2,7 +2,7 @@
 layout: post
 title:  "用reveal来查看别人的app界面"
 date:   2016-05-04 21:53:20
-categories: jekyll update
+categories: iosre kaupelot
 ---
 <div class="show-content"><blockquote><p>Reveal是一个很强大的UI分析工具，可非常直观地查看app的UI布局，不仅限于自己的app，其他app的UI布局也一览无余。下面就是要干这事...</p></blockquote>
 <h3>必须要一台越狱手机</h3>
