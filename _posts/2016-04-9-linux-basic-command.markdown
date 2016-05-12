@@ -39,12 +39,9 @@ echo 有显示打印出的意思、
     -l   列出长数据串包含文件的属性与权限等数据（常用）
     
     [root@HadoopMaster Desktop]# ls -i
-    138916 Eclipse.desktop            138942 nginx.txt~
-    132103 nginx+redis+tomcat         139507 Nginx瀹瑁
-    缃畘
-    139438 nginx+redis+tomcat???鼐???  139404 redis瀹瑁
-    缃畘
-    138922 Nginx+tomcat+redis????     138882 ??钥.txt
+    21842534 Makefile        21842532 control         21848715 obj
+    21848264 theos           21848267 Tweak.xm        21864228 debs
+    21842533 simulator.plist
     
 
 ================================================================

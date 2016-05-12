@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  “我也只是试试这个怎么用”
+title:  “开始写点东西”
 date:   2016-01-15 3:51:42
 categories: jekyll update
 ---
-关于在jekyll怎么写文章,我也不知道的啦!反正先试试.
+开始写点东西了.
 
 
             
