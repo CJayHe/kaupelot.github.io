@@ -16,7 +16,6 @@ git clone --recursive https://github.com/theos/theos.git
     vim ~/.zshrc //如果你使用的bash,则为:~/.bash_profile
     export THEOS=/opt/theos
     export PATH=$THEOS/bin:$PATH
-    export nic.pl=/opt/theos/bin/nic.pl
  
 
 ### 安装ldid
@@ -27,7 +26,8 @@ git clone --recursive https://github.com/theos/theos.git
 ### 导入include头文件和非必要的类
 下载https://github.com/hbang/headers,然后将所有的头文件复制到/opt/theos/include目录中
 #####假设你的越狱iPhone的内网地址是192.168.1.2,开启ssh.从其复制两个文件出来.
-    sudo scp root@192.168.1.2:/Library/Frameworks/CydiaSubstrate.framework/Headers/CydiaSubstrate.h $THEOS/include/substrate.h
+
+        sudo scp root@192.168.1.2:/Library/Frameworks/CydiaSubstrate.framework/Headers/CydiaSubstrate.h $THEOS/include/substrate.h
     sudo scp root@192.168.1.2:/Library/Frameworks/CydiaSubstrate.framework/CydiaSubstrate $THEOS/lib/libsubstrate.dylib
 
 ### 安装dpkg (如果没有安装brew,建议参考)
@@ -49,3 +49,4 @@ git clone --recursive https://github.com/theos/theos.git
 ![run](http://zhenhappy.github.io/assets/images/iOS-jailbreak-development-environment-1/1454580724047.jpg)
 
 #### 玩的开心!
+如果有进阶的需求,可以考虑在iPhone安装cycript,通过ssh连接iPhone之后就可以直接调试了.可以参考http://blog.csdn.net/sakulafly/article/details/29633627

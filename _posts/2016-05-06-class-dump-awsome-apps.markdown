@@ -13,7 +13,7 @@ class-dump 官网地址：[这里](http://stevenygard.com/)
 
 命令如下：
 
-**class-dump -H /Applications/Calculator.app -o /Users/Rio/Desktop/calculate\ heads**
+    **class-dump -H /Applications/Calculator.app -o /Users/Rio/Desktop/calculate\ heads**
 
 解释：
 
@@ -62,65 +62,65 @@ ssh: connect to host 172.17.24.70 port 22: Connection refused
 
 去网上下载 Clutch 这个软件，改名为 clutch (不改也可以，这里改名只是为了以后敲命令的时候老是要第一个字母大写，麻烦！)，然后 copy 到 iPhone 的 /usr/bin/ 目录下面。
 
-MacBook:~ aaron$ scp /Users/aaron/Documents/kugou/doc/越狱开发/hack/clutch root@172.17.24.70:/usr/bin/
+    MacBook:~ aaron$ scp /Users/aaron/Documents/kugou/doc/越狱开发/hack/clutch root@172.17.24.70:/usr/bin/
 
-root@172.17.24.70's password: 
+    root@172.17.24.70's password: 
 
-clutch                                        100%  915KB 914.8KB/s   00:00 
+    clutch                                        100%  915KB 914.8KB/s   00:00 
 
 呐，已经 ok 了，接下来修改 clutch 为最高权限 777
 
-iPhone:/usr/bin root# chmod 777 ./clutch
+    iPhone:/usr/bin root# chmod 777 ./clutch
 
 查看是否修改成功，
 
-iPhone:/usr/bin root# ls -al | grep clutch
+    iPhone:/usr/bin root# ls -al | grep clutch
 
--rwxrwxrwx 1 root   wheel  936752 Jan  7 16:02 clutch
+    -rwxrwxrwx 1 root   wheel  936752 Jan  7 16:02 clutch
 
 可以看到已经是最高权限了。
 
 接下来是使用 clutch 了，网上说还要安装 Mobile Terminal 啥啥啥的一律不用管它，直接开干。
 
-iPhone:/usr/bin root# clutch -i 
+    iPhone:/usr/bin root# clutch -i 
 
 输入上面的命令就可以看到一大堆可以砸壳的应用：
 
-Installed apps:
+    Installed apps:
 
-1) <AlipayWallet bundleID: com.alipay.iphoneclient>
+    1) <AlipayWallet bundleID: com.alipay.iphoneclient>
 
-2) <WeChat bundleID: com.tencent.xin>
+    2) <WeChat bundleID: com.tencent.xin>
 
-3) <yidian bundleID: com.yidian.zixun>
+    3) <yidian bundleID: com.yidian.zixun>
 
-4) <YoukuiPhone bundleID: com.youku.YouKu>
+    4) <YoukuiPhone bundleID: com.youku.YouKu>
 
-5) <嘀嘀打车 bundleID: com.xiaojukeji.didi>
+    5) <嘀嘀打车 bundleID: com.xiaojukeji.didi>
 
-6) <Taobao4iPhone bundleID: com.taobao.taobao4iphone>
+    6) <Taobao4iPhone bundleID: com.taobao.taobao4iphone>
 
-7) <NewsBoard bundleID: com.netease.news>
+    7) <NewsBoard bundleID: com.netease.news>
 
-8) <iLady bundleID: cn.com.modernmedia.imodernlady>
+    8) <iLady bundleID: cn.com.modernmedia.imodernlady>
 
-9) <netdisk_iPhone bundleID: com.baidu.netdisk>
+    9) <netdisk_iPhone bundleID: com.baidu.netdisk>
 
-..........
+    ..........
 
 输入你想要砸壳的应用 bundle identifier 进行砸壳
 
-iPhone:/usr/bin root# clutch -d com.yidian.zixun
+    iPhone:/usr/bin root# clutch -d com.yidian.zixun
 
 成功后你就可以看到已经破解完后的路径：
 
-DONE: /private/var/mobile/Documents/Dumped/com.yidian.zixun-iOS7.0-(Clutch-2.0 RC2).ipa
+    DONE: /private/var/mobile/Documents/Dumped/com.yidian.zixun-iOS7.0-(Clutch-2.0 RC2).ipa
 
 之后，copy .ipa 文件到你的电脑上，
 
-MacBook:~ aaron$ scp root:172.17.24.70:/private/var/mobile/Documents/Dumped/com.yidian.zixun-iOS7.0-(Clutch-2.0 RC2).ipa ~/Desktop/
+    MacBook:~ aaron$ scp root:172.17.24.70:/private/var/mobile/Documents/Dumped/com.yidian.zixun-iOS7.0-(Clutch-2.0 RC2).ipa ~/Desktop/
 
--bash: syntax error near unexpected token `('
+    -bash: syntax error near unexpected token `('
 
 诶，有错误，识别不了`('，那么改一下.ipa 名字后在 scp 吧
 
@@ -128,11 +128,11 @@ iPhone:/private/var/mobile/Documents/Dumped root# mv com.yidian.zixun-iOS7.0-\(C
 
 再 copy 到电脑桌面：
 
-MacBook:~ aaron$ scp root@172.17.24.70:/private/var/mobile/Documents/Dumped/yidian.ipa ~/Desktop/yidian.ipa
+    MacBook:~ aaron$ scp root@172.17.24.70:/private/var/mobile/Documents/Dumped/yidian.ipa ~/Desktop/yidian.ipa
 
-root@172.17.24.70's password: 
+    root@172.17.24.70's password: 
 
-yidian.ipa                                    100%   25MB   1.5MB/s   00:16
+    yidian.ipa                                    100%   25MB   1.5MB/s   00:16
 
 至此，砸壳就已经完成了，现在可以用 class-dump 把头文件 dump 出来了。cheer！
 
@@ -150,19 +150,19 @@ yidian.ipa                                    100%   25MB   1.5MB/s   00:16
 
 # 看log
 
-apt-get install socat
+    apt-get install socat
 
 安装完后，输入以下命令看log
 
-socat - UNIX-CONNECT:/var/run/lockdown/syslog.sock
+    socat - UNIX-CONNECT:/var/run/lockdown/syslog.sock
 
->watch
+    >watch
 
 安装 socat 的时候出现这个错误提示的话：
 
-E: Could not get lock /var/lib/dpkg/lock - open (35: Resource temporarily unavailable) 
+    E: Could not get lock /var/lib/dpkg/lock - open (35: Resource temporarily unavailable) 
 
-E: Unable to lock the administration directory (/var/lib/dpkg/), is another process using it?
+    E: Unable to lock the administration directory (/var/lib/dpkg/), is another process using it?
 
 可以尝试用[这里](http://askubuntu.com/questions/15433/unable-to-lock-the-administration-directory-var-lib-dpkg-is-another-process)的办法解决。（先试一下这个帖子提到的其他办法，最后不得已再使用如下办法）
 
@@ -172,15 +172,15 @@ E: Unable to lock the administration directory (/var/lib/dpkg/), is another proc
 
 # 这个是使用iosOpenDev开发时，xcode把deb包安装到手机时，需要手机先具备的环境条件
 
-apt-get install coreutils diskdev-cmds file-cmds system-cmds com.saurik.substrate.safemode mobilesubstrate preferenceloader
+    apt-get install coreutils diskdev-cmds file-cmds system-cmds com.saurik.substrate.safemode mobilesubstrate preferenceloader
 
 若出现“Package diskdev-cmds is not available, but is referred to by another package. This may mean that the package is missing, has been obsoleted, or is only available from another source”这样的安装错误的时候，执行如下命令后再次安装过，
 
-sudo apt-get update && && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y && sudo apt-get install packagename
+    sudo apt-get update && && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y && sudo apt-get install packagename
 
 (or)
 
-apt-get update && apt-get upgrade -y && apt-get dist-upgrade -y && apt-get install packagename
+    apt-get update && apt-get upgrade -y && apt-get dist-upgrade -y && apt-get install packagename
 
 参考来源：http://www.blackmoreops.com/2014/12/13/fixing-error-package-packagename-not-available-referred-another-package-may-mean-package-missing-obsoleted-available-another-source-e-pa/
 
@@ -188,13 +188,13 @@ apt-get update && apt-get upgrade -y && apt-get dist-upgrade -y && apt-get insta
 
 1. 在iosOpenDev编译完后，手动把dylib拷贝到手机：
 
-scp hookKTV.dylib root@192.168.2.42:/Library/MobileSubstrate/DynamicLibraries/
+        scp hookKTV.dylib root@192.168.2.42:/Library/MobileSubstrate/DynamicLibraries/
 
 2. 把原本的NSLog换成写文件，把hook信息写到文件，之后用手机助手之类的工具导出文件。
 
 3. 重启springboard：
 
-killall SpringBoard
+        killall SpringBoard
 
 -------------------------------- 分割线 -----------------------------------
 
@@ -206,7 +206,7 @@ killall SpringBoard
 
 新建好的 .xm 文件中会有一个一个提示，要你去 /opt/iOSOpenDev/lib/ 目录下拉一个libsubstrate.dylib 动态链接库到工程，因为我们这里是要hook SpringBoard，要弹出一个弹出框，所以需要再导入 UIKit.framework.
 
-#error iOSOpenDev post-project creation from template requirements (remove these lines after completed) -- \
+    #error iOSOpenDev post-project creation from template requirements (remove these lines after completed) -- \
 
 Link to libsubstrate.dylib: \
 
@@ -256,15 +256,15 @@ Link to libsubstrate.dylib: \
 解决办法是：修改 TARGETS - Build Settings - Code Signing - Provisioning Profile 为 **
 iOS Team Provisioning Profile: *** 就好了。
 
-ssl 到手机，运行
+ssh 到手机，运行
 
-socat - UNIX-CONNECT:/var/run/lockdown/syslog.sock
+    socat - UNIX-CONNECT:/var/run/lockdown/syslog.sock
 
->watch
+    >watch
 
 这个命令，准备查看输出 log。
 
-电脑和越狱设备连接到同一个网络下，然后查看设备的 wifi 地址，记下来，然后填写到 TARGETS - Build Settings - User-Defined - iOSOpenDevDevice 里面去，比如我这里是 192.168.2.42 ,为的是等下 Profiling 的时候把动态链接库 HookTest.dylb copy 到 root@192.168.2.42:/Library/MobileSubstrate/DynamicLibraries/ 目录下。
+电脑和越狱设备连接到同一个网络下，然后查看设备的 wifi 地址，记下来，然后填写到 TARGETS - Build Settings - User-Defined - iOSOpenDevDevice 里面去，比如我这里是 192.168.2.42 ,为的是等下 Profiling 的时候把动态链接库 HookTest.dylb copy 到           root@192.168.2.42:/Library/MobileSubstrate/DynamicLibraries/ 目录下。
 
 假如你以上环境都能成功搭建的话，那接下来就简单了，点击 XCode -> Product -> Build For -> Profiling ，XCode 就会帮你把动态链接库 HookTest.dylib （我新建的工程叫HookTest，所以这里是HookTest.dylib）和 .plist 文件copy 到 root@192.168.2.42:/Library/MobileSubstrate/DynamicLibraries/ 这个路径下了，然后重启springboard：
 
@@ -282,7 +282,7 @@ com.aaron.hooksb_1.0-1_iphoneos-arm.deb 是这个，Profiling 完之后，iphone
 
 用 scp 命令可以将设备里面的文件拷贝到电脑里查看：
 
-scp root@192.168.2.42:/var/root/iOSOpenDevPackages/com.aaron.hooksb_1.0-1_iphoneos-arm.deb ~/Desktop/
+    scp root@192.168.2.42:/var/root/iOSOpenDevPackages/com.aaron.hooksb_1.0-1_iphoneos-arm.deb ~/Desktop/
 
 NOTE：在 Profiling 可能遇到的问题： 
 
@@ -292,11 +292,11 @@ NOTE：在 Profiling 可能遇到的问题：
 
 第一步：拷贝公钥到 iPhone 的 ~/home/userName 目录（没有该目录新建即可，其实我觉得应该是iPhone的任何目录都行的，其目的都是为了第二步）
 
-scp ~/.ssh/id_rsa.pub serverUsername@host.com:/home/serverUsername
+    scp ~/.ssh/id_rsa.pub serverUsername@host.com:/home/serverUsername
 
 第二步：把公钥的key写到 ~/.ssh/authorized_keys （同样没有该目录新建）
 
-cat id_rsa.pub >> ~/.ssh/authorized_keys
+    cat id_rsa.pub >> ~/.ssh/authorized_keys
 
 然后再次 Profiling 就编译通过了。
 
