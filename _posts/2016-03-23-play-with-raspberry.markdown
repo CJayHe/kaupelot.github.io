@@ -6,7 +6,6 @@ categories: jekyll update
 ---
 有时间,闲鱼上面入手了一部树莓派b+,卖家给包装的不错,快递送过来直接点亮了,系统是完好的,配了显示器,十分好上手,就差更深入的学习了.
 
-我的树莓派又要重新开机了。又重新买了一张 SD 卡。那么开始吧！
 
 ## 准备烧好镜像的 SD 卡
 
@@ -18,9 +17,17 @@ categories: jekyll update
 
 ## 启动
 
-还是依照上面的 Setup Guide，因为公司显示器什么的多，所以就省点力气直接接显示器、键盘鼠标来弄了。会顺利启动，然后直接安装 Raspbian 要等几分钟。（记得之前是直接 `dd` 把 Raspbian 的镜像烧到 SD 卡的，会更快一些。不过这次试试这个 NOOBS。）
+还是依照上面的 Setup Guide，连接显示器。会顺利启动，然后直接安装 Raspbian 要等几分钟。（记得之前是直接 `dd` 把 Raspbian 的镜像烧到 SD 卡的，会更快一些。不过这次试试这个 NOOBS。）
 
+        $ dd bs=4m if=pi.img of=/dev/rdisk2
+        781+1 records in 
+        781+1 records out 
+        3276800000 bytes transferred in 194.134151 secs (16879050 bytes/sec)
 现在的版本不用配置开机之后默认就会到图形界面了，蛮好的，那这一步就提前完成了。
+默认登录页面需要用户名:pi,密码是:raspberry.(好像最新版的树莓派系统连接显示器的时候是不需要输入用户名密码的.第一次刷的老版本系统需要输入,验证时间2016年04月13日.)
+如果没有进入图形界面输入:
+
+        startx
 
 ## 配置
 
@@ -109,6 +116,10 @@ Default Locale 选择 `en_US.UTF-8`。
 
 这个设置完之后就解决了！应该是一开始勾选的问题吧，勾的是 en_GB，但用的是 en_US。
 
+### 配置空间
+
+
+
 ### 用 zsh
 
 - 
@@ -120,16 +131,26 @@ config git user
 - 
 oh my zsh
 
-OK， 至此树莓派又成功的跑起来了！
+OK， 至此树莓派成功的跑起来了！
+需要在进行什么配置和安装的时候就很简单了:首先是更新一下库
 
-## 暂且存在的问题
+    sudo apt-get update
+    sudo apt-get upgrade
+    
+然后就可以开始安装最新版本的程序了,以LAMP为例,树莓派默认带有Apache2,启动命令是:
 
-- 
-showdown 里面的 halt、poweroff 到底指什么
+    service apache2 start
+如果没有,那就安装一下:
+    
+    sudo apt-get install apache2 apache2-utils
 
-- 
-locale 到底是什么概念
+网页文件默认文件夹在:/var/www/html/
+然后安装php和mysql即可
 
-## 参考
+    sudo apt-get install libapache2-mod-php5 php5 php-pear php5-xcache php5-mysql php5-curl php5-gd mysql-server
+    
+安装完mysql后会需要你设置用户名密码.然后一切搞定了.
+重启后需要使用就使用
 
-有关 Linux 的关机命令（还是不太明白那个 halt 是什么，还有这些命令能不能和 GUI 里面的按钮对应上？）：
+    service mysql start
+好了,更多功能自己去发现了(年初推出的树莓派3好像也是不错的,淘宝上200多一点,内置WiFi和蓝牙,性能稍微提升了下,如果手里是树莓派1或者没有别的板子,可以考虑直接入手3,考虑到2和3一模一样,性能提升不是太大,我就等4吧).enjoy your raspberry pi !
