@@ -5,7 +5,7 @@ date:   2016-05-12 19:47:20
 categories: iosre kaupelot
 ---
 
-            相信对Linux、Unix比较熟悉的朋友，在iphone或
+相信对Linux、Unix比较熟悉的朋友，在iphone或
 ipad越狱后发现通过Cydia可以安装OpenSSH，一定都想安装上并且通过ssh登录上去看看，但是登录后却发现几乎没几个命令可用，也就只有ls、cd等一些常用的命令，至于ifconfig、ping、netstat等都没有。。。
 
 下面就来介绍一下如何让iphone或
