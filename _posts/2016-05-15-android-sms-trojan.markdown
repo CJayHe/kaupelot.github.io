@@ -17,7 +17,6 @@ categories: iosre kaupelot android
 
 在拿到用户提供的病毒样本后，首先来看下这个病毒程序里都包含了哪些文件，如图：
 
-![image001.png](http://www.freebuf.com/buf/themes/freebuf/images/grey.gif)
 
 ![image001.png](http://image.3001.net/images/20160322/14586337614573.png)
 
@@ -25,19 +24,16 @@ categories: iosre kaupelot android
 
 然后将这个apk程序逆向后查看AXML 文件，看看都申请了哪些权限，如图：
 
-![image002.png](http://www.freebuf.com/buf/themes/freebuf/images/grey.gif)
 ![image002.png](http://image.3001.net/images/20160322/14586356397232.png)
 图2：病毒程序所使用的所有权限
 
 从程序申请的短信、联系人、联网的权限来看，我们基本就可以确定这是一款“短信拦截马”的恶意病毒程序了，从AXML文件中，我们还能发现病毒作者还定义了两个属性，installLocation和excludeFromRecents，设置这两个属性的目的是不让程序安装到sdcard中和隐藏最近任务，这样设置的目的是不让自身出现在最近程序列表中，减少被普通用户发现的概率。
 
-![image003.png](http://www.freebuf.com/buf/themes/freebuf/images/grey.gif)
 ![image003.png](http://image.3001.net/images/20160322/14586357198145.png)
 图3：隐藏最近任务
 
 接着，我们将该恶意程序拖到JEB中继续往下分析，病毒安装触发后会自动运行并隐藏自身启动图标。
 
-![image004.png](http://www.freebuf.com/buf/themes/freebuf/images/grey.gif)
 ![image004.png](http://image.3001.net/images/20160322/14586357468890.png)
 图4：隐藏启动图标
 
@@ -65,11 +61,9 @@ categories: iosre kaupelot android
 
 3)判断木马是否过期。
 
-![image006.png](http://www.freebuf.com/buf/themes/freebuf/images/grey.gif)
 ![image006.png](http://image.3001.net/images/20160322/14586358707252.png)
 图6：Sevice主要功能
 
-![image007.png](http://www.freebuf.com/buf/themes/freebuf/images/grey.gif)
 
 ![image007.png](http://image.3001.net/images/20160322/14586358922914.png)
 
@@ -79,7 +73,6 @@ categories: iosre kaupelot android
 
 可以触发此拦截马行为的入口点还包括开机广播、网络切换广播、短信相关广播等。
 
-![image008.png](http://www.freebuf.com/buf/themes/freebuf/images/grey.gif)
 
 ![image008.png](http://image.3001.net/images/20160322/14586359206994.png)
 
@@ -87,19 +80,20 @@ categories: iosre kaupelot android
 
 木马向控制手机回传部分短信时，为了防止手机中的安全软件进行监控拦截，还会过滤和替换了敏感关键词。
 
-![image009.png](http://www.freebuf.com/buf/themes/freebuf/images/grey.gif)
 ![image009.png](http://image.3001.net/images/20160322/14586359491965.png)
 图9：过滤和替换敏感关键词
 
 木马遍历完用户手机中的个人隐私信息后开始向木马制作者邮箱中发送短信，通过几天的时间，病毒作者的邮箱中就收到了上千条中招用户的通讯录和短信息，有点儿流弊有点儿犀利有点儿屌，部分数据内容如下：
 
-![11.png](http://image.3001.net/images/20160322/14586390245214.png)![22.png](http://image.3001.net/images/20160322/14586390247761.png)![33.png](http://www.freebuf.com/buf/themes/freebuf/images/grey.gif)
-![11.png](http://image.3001.net/images/20160322/14586390245214.png)![22.png](http://image.3001.net/images/20160322/14586390247761.png)![33.png](http://image.3001.net/images/20160322/14586390245859.png)
+![11.png](http://image.3001.net/images/20160322/14586390245214.png)
+![22.png](http://image.3001.net/images/20160322/14586390247761.png)
+![11.png](http://image.3001.net/images/20160322/14586390245214.png)
+![22.png](http://image.3001.net/images/20160322/14586390247761.png)
+![33.png](http://image.3001.net/images/20160322/14586390245859.png)
 图10：病毒作者邮箱保存的用户隐私信息
 
 其实，进入短信拦截马的邮箱也不是什么难事儿，因为大部分类似的拦截马都会直接把账号和密码写在代码里，然后我们直接定位到关键代码调用的地方找到[登录](登录)账号和密码就可以直接进去了（有个别的病毒会把邮箱的登录密码通过DES等加密方式进行加密，破解DES加密也不是什么难事）。
 
-![image013.png](http://www.freebuf.com/buf/themes/freebuf/images/grey.gif)
 ![image013.png](http://image.3001.net/images/20160322/14586389739000.png)
 图11：病毒作者的邮箱账号和密码
 
