@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "iPhone常用终端命令"
+title:  "安卓短信拦截马"
 date:   2016-05-16 02:23:11
 categories: iosre kaupelot android
 ---
@@ -107,7 +107,6 @@ categories: iosre kaupelot android
 
 ## 0&#215;02拦截马整体功能流程图
 
-![image014.png](http://www.freebuf.com/buf/themes/freebuf/images/grey.gif)
 ![image014.png](http://image.3001.net/images/20160322/14586361002919.png)
 图12：短信拦截马功能实现流程
 
@@ -115,7 +114,6 @@ categories: iosre kaupelot android
 
 通过如上分析，我们基本可以了解制作这种短信拦截马的目的是什么?无利不起早，每个行业都必须是有利可图的，通过这种方式，黑客们很直接也很容易的就能盗取用户的个人利益并变为己有，从通过伪基站的方式定向发送社工欺诈短信，再到用户点击信息中包含的恶意链接，云服务器挂马诱导用户下载安装短信拦截马，再到欺骗用户输入个人信息等，最后攻击者通过拦截马转发到邮箱的网银验证码完成转账功能，这就是一个简单的拦截马功能，如下图，[黑色产业链整体流程图](黑色产业链整体流程图)：
 
-![image015.png](http://www.freebuf.com/buf/themes/freebuf/images/grey.gif)
 ![image015.png](http://image.3001.net/images/20160322/14586361503213.png)
 图13：黑产流程图
 
@@ -123,11 +121,9 @@ categories: iosre kaupelot android
 
 通过关键词“拦截马”或“拦截马 出售”等方式在Google和Baidu搜索引擎中搜索，我们可以看到很多关于此类木马信息的地下产业链揭露和样本分析等文章搜索结果，其中还有很多此类短信拦截马的交易信息：
 
-![image016.png](http://www.freebuf.com/buf/themes/freebuf/images/grey.gif)
 ![image016.png](http://image.3001.net/images/20160322/14586361756965.png)
  图14：Baidu搜索结果
 
-![image017.png](http://www.freebuf.com/buf/themes/freebuf/images/grey.gif)
 
 ![image017.png](http://image.3001.net/images/20160322/1458636221819.png)
 
@@ -135,9 +131,11 @@ categories: iosre kaupelot android
 
 下图为某项目外包网的关于安卓短信拦截马的相关开发和售卖等需求的发布信息：
 
-![image018.png](http://image.3001.net/images/20160322/14586362707859.png)![image019.png](http://www.freebuf.com/buf/themes/freebuf/images/grey.gif)
+![image018.png](http://image.3001.net/images/20160322/14586362707859.png)
 
-![image018.png](http://image.3001.net/images/20160322/14586362707859.png)![image019.png](http://image.3001.net/images/20160322/14586362706114.png)
+![image018.png](http://image.3001.net/images/20160322/14586362707859.png)
+
+![image019.png](http://image.3001.net/images/20160322/14586362706114.png)
 
 图16：安卓拦截马的开发和售卖需求发布信息
 
