@@ -37,11 +37,11 @@ This is an extended version of [the guide I posted in 2014](http://codedigging.c
 
 ### Environment
 
-You need:
+你需要准备:
 
-1. Mac with the latest XCode installed
-2. a jailbroken iPhone/iPad/iPod with OpenSSH installed
-3. [MachOView](https://sourceforge.net/projects/machoview/) installed on the Mac
+1. 安装最新版本XCode的Mac设备
+2. 一台已经越狱并且安装了OpenSSH的iPhone/iPad/iPod
+3. Mac安装[MachOView](https://sourceforge.net/projects/machoview/) 
 
 ### Excracting `debugserver`
 
