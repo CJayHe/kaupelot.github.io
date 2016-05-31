@@ -45,18 +45,18 @@ This is an extended version of [the guide I posted in 2014](http://codedigging.c
 
 ### Excracting `debugserver`
 
-Extract `debugserver` from XCode. On Mac, run in console:
+从Xcode中提取'debugserver',在Mac上打开终端:
 
     $ ls /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport/
     
 
-As result, you see available iOS versions in your console, e.g.
+正常情况下,你会在终端中看到以下显示的iOS版本:
 
     6.0     7.0     8.0     8.2     8.4     9.1
     6.1     7.1     8.1     8.3     9.0     9.2 (13C75)
     
 
-Choose the iOS version running on your iOS device. Let it be `7.1`. Extract `debugserver` for iOS 7.1:
+选择您越狱的iOS设备对应的iOS版本,比如我的iPhone是7.1,则提取7.1对应版本的'debugserver':
 
     $ hdiutil attach /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport/7.1/DeveloperDiskImage.dmg
     $ cp /Volumes/DeveloperDiskImage/usr/bin/debugserver ./
