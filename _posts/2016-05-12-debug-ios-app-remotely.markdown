@@ -62,7 +62,7 @@ This is an extended version of [the guide I posted in 2014](http://codedigging.c
     $ cp /Volumes/DeveloperDiskImage/usr/bin/debugserver ./
     
 
-**Note!**`debugserver` is so-called "universal binary" with MachO fat header, it contains both ARM32 and ARM64 binaries, so don't care bitwise. ■
+**注意!**`debugserver` is so-called "universal binary" with MachO fat header, it contains both ARM32 and ARM64 binaries, so don't care bitwise. ■
 
 Now you have `debugserver` binary in your current directory on your Mac. 
 
